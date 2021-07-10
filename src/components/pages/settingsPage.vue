@@ -42,9 +42,6 @@ export default {
 </script>
 <style lang="scss">
 .settings-page {
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  margin-top:40vh;
 }
 </style>
