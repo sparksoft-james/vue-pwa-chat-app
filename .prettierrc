@@ -1,0 +1,11 @@
+{
+  "semi": false,
+  "singleQuote": true,
+  "vue/html-self-closing": 0,
+  "tabWidth": 2,
+  "endOfLine": "auto",
+  "arrowParens": "avoid",
+  "trailingComma": "none",
+  "bracketSpacing": true,
+  "jsxBracketSameLine": true
+}
