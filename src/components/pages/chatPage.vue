@@ -52,9 +52,9 @@
         @keydown.enter.exact.prevent
         @keyup.enter.exact="sendMessages"
         @keydown.enter.shift.exact="newline"
-        prepend-inner-icon="mdi-paperclip"
-        append-icon="mdi-sticker-circle-outline"
       ></v-textarea>
+      <!--    prepend-inner-icon="mdi-paperclip"
+        append-icon="mdi-sticker-circle-outline" -->
       <v-btn icon small @click="sendMessages" :disabled="!message">
         <v-icon> mdi-microphone </v-icon>
       </v-btn>
