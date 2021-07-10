@@ -20,7 +20,7 @@ export default {
     })
   },
   methods: {
-    signInFunc() {
+    signInFunc () {
       const provider = new firebase.auth.GoogleAuthProvider()
       firebase
         .auth()
@@ -29,15 +29,12 @@ export default {
           console.log(err)
         })
     },
-    signOutFunc() {
+    signOutFunc () {
       firebase
         .auth()
         .signOut()
         .then(() => {
           // Sign-out successful.
-        })
-        .catch(error => {
-          // An error happened.
         })
     }
   }

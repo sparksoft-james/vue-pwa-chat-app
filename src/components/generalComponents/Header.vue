@@ -42,7 +42,7 @@ import store from '@/store'
 
 export default {
   props: { headerName: { type: String, required: true } },
-  data() {
+  data () {
     return {
       selectedPage: 'all'
     }
@@ -52,7 +52,7 @@ export default {
     //   this.$router.push('/newMessage')
     // }
 
-    setSelectedPage(page) {
+    setSelectedPage (page) {
       this.selectedPage = page
       store.dispatch('changeCurrentPage', page)
     }

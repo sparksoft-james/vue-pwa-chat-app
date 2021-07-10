@@ -1,6 +1,6 @@
-import Vue from "vue";
-import Vuex from "vuex";
-Vue.use(Vuex);
+import Vue from 'vue'
+import Vuex from 'vuex'
+Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     user: {
@@ -10,40 +10,40 @@ export default new Vuex.Store({
     currentTabs: 'all'
   },
   getters: {
-    user(state) {
+    user (state) {
       return state.user
     },
-    currentTabs(state) {
+    currentTabs (state) {
       return state.currentTabs
     }
   },
   mutations: {
-    SET_LOGGED_IN(state, value) {
-      state.user.loggedIn = value;
+    SET_LOGGED_IN (state, value) {
+      state.user.loggedIn = value
     },
-    SET_USER(state, data) {
-      state.user.data = data;
+    SET_USER (state, data) {
+      state.user.data = data
     },
-    SET_CURRENT_PAGE(state, data) {
-      state.currentTabs = data;
+    SET_CURRENT_PAGE (state, data) {
+      state.currentTabs = data
     }
   },
   actions: {
-    fetchUser({ commit }, user) {
-      commit("SET_LOGGED_IN", user !== null);
+    fetchUser ({ commit }, user) {
+      commit('SET_LOGGED_IN', user !== null)
       if (user) {
-        commit("SET_USER", {
+        commit('SET_USER', {
           displayName: user.displayName,
           email: user.email,
           uid: user.uid,
-          photoURL: user.photoURL,
-        });
+          photoURL: user.photoURL
+        })
       } else {
-        commit("SET_USER", null);
+        commit('SET_USER', null)
       }
     },
-    changeCurrentPage({ commit }, value) {
-      commit("SET_CURRENT_PAGE", value);
+    changeCurrentPage ({ commit }, value) {
+      commit('SET_CURRENT_PAGE', value)
     }
   }
-});
+})

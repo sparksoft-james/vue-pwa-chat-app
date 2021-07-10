@@ -14,7 +14,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   components: { Header, CallListItem },
-  data() {
+  data () {
     return {
       allItems: [
         {

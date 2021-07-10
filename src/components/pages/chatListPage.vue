@@ -11,7 +11,7 @@ import Header from '@/components/generalComponents/Header'
 export default {
   name: 'app',
   components: { ChatListItem, Header },
-  data() {
+  data () {
     return {
       listitem: [
         {

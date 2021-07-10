@@ -19,13 +19,13 @@
 </template>
 <script>
 export default {
-  data() {
+  data () {
     return {
       currentTab: 'message'
     }
   },
   methods: {
-    route(url) {
+    route (url) {
       this.currentTab = url
       this.$router.push({ name: url })
     }

@@ -66,7 +66,7 @@ import firebase from 'firebase'
 import { mapGetters } from 'vuex'
 
 export default {
-  data() {
+  data () {
     return {
       item: {},
       db: firebase.firestore(),
@@ -79,7 +79,7 @@ export default {
       user: 'user'
     })
   },
-  mounted() {
+  mounted () {
     this.item = this.$cookies.get('current_user')
     this.db
       .collection('messages')
@@ -89,10 +89,10 @@ export default {
       })
   },
   methods: {
-     newline() {
-      this.message = `${this.message}\n`;
+    newline () {
+      this.message = `${this.message}\n`
     },
-    sendMessages() {
+    sendMessages () {
       const messageInfo = {
         userUID: this.user.data.uid,
         displayName: this.user.data.displayName,
@@ -106,13 +106,13 @@ export default {
 
       this.$refs['scrollable'].scrollIntoView({ behavior: 'smooth' })
     },
-    sentOrReceived(userUID) {
+    sentOrReceived (userUID) {
       return userUID === this.user.data.uid ? 'sent' : 'received'
     },
-    checkLastMessage(msg,index) {
-      if(this.messages.length > 0 && index < this.messages.length -1 ) {
+    checkLastMessage (msg, index) {
+      if (this.messages.length > 0 && index < this.messages.length - 1) {
         const prevMessage = this.messages[index + 1]
-        return prevMessage.userUID  ? prevMessage.userUID !== msg.userUID : false
+        return prevMessage.userUID ? prevMessage.userUID !== msg.userUID : false
       }
       return true
     }

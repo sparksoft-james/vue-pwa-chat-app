@@ -22,13 +22,13 @@ import {incoming, outgoing, missed} from '@/assets/svg/commonSvg.js'
 export default {
   props: { items: { type: Array, required: true } },
   methods: {
-    renderCallListTitle(item){
+    renderCallListTitle (item) {
       return `<b>${item.name}</b> <span style="float:right; font-weight: 400; font-size: 13px">${item.datetime}</span>`
     },
-    renderCallListSubtitle(item) {
+    renderCallListSubtitle (item) {
       let iconSvg = ''
 
-      if(item.callStatus === 'Incoming') {
+      if (item.callStatus === 'Incoming') {
         iconSvg = incoming
       } else if (item.callStatus === 'Outgoing') {
         iconSvg = outgoing
@@ -38,7 +38,7 @@ export default {
       }
       return `<span>${iconSvg}</span> <span style="font-weight: 400; font-size: 13px">${item.callStatus}</span> . <span>${item.duration}</span> `
     }
-  },
+  }
 }
 </script>
 <style lang="scss">
