@@ -6,11 +6,15 @@ export default new Vuex.Store({
     user: {
       loggedIn: false,
       data: null
-    }
+    },
+    currentTabs: 'all'
   },
   getters: {
     user(state) {
       return state.user
+    },
+    currentTabs(state) {
+      return state.currentTabs
     }
   },
   mutations: {
@@ -19,6 +23,9 @@ export default new Vuex.Store({
     },
     SET_USER(state, data) {
       state.user.data = data;
+    },
+    SET_CURRENT_PAGE(state, data) {
+      state.currentTabs = data;
     }
   },
   actions: {
@@ -34,6 +41,9 @@ export default new Vuex.Store({
       } else {
         commit("SET_USER", null);
       }
+    },
+    changeCurrentPage({ commit }, value) {
+      commit("SET_CURRENT_PAGE", value);
     }
   }
 });

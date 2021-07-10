@@ -1,11 +1,11 @@
 <template>
-  <div class="settings-page d-flex align-center justify-center col-12">
+  <div class="settings-page d-flex align-center justify-center">
     <div v-if="user.loggedIn">
-      <h3 class="mb-3">{{ user.data && user.data.displayName }}</h3>
-      <v-btn @click="signOutFunc()">Sign Out</v-btn>
+      <h3 class="mb-3">Welcome, {{ user.data && user.data.displayName }}</h3>
+      <v-btn dark @click="signOutFunc()">Sign Out</v-btn>
     </div>
 
-    <v-btn v-else @click="signInFunc">Login with Google</v-btn>
+    <v-btn v-else dark @click="signInFunc">Login with Google</v-btn>
   </div>
 </template>
 <script>

@@ -8,7 +8,7 @@
           </v-list-item-avatar>
 
           <v-list-item-content>
-            <v-list-item-title v-html="item.title" class="name"></v-list-item-title>
+            <v-list-item-title v-html="renderChatListTitle(item)" class="name"></v-list-item-title>
             <v-list-item-subtitle v-html="item.subtitle" class="description"></v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
@@ -21,6 +21,9 @@
 export default {
   props: { items: { type: Array, required: true } },
   methods: {
+    renderChatListTitle(item){
+      return `<b>${item.title}</b> <span style="float:right; font-weight: 400; font-size: 13px">${item.datetime}</span>`
+    },
     routeToChat(item){
       this.$cookies.set('current_user',item)
       this.$router.push('/chat')

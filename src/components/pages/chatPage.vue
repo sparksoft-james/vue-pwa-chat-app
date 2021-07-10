@@ -28,8 +28,6 @@
           :key="'index =' + index"
           :class="['message', sentOrReceived(msg.userUID)]"
         >
-        <!--  v-if="messages[index-1].userUID !== msg.userUID" -->
-        <!-- {{messages[index-1].userUID}} -->
           <img v-if="checkLastMessage(msg,index)" :src="msg.photoURL" :alt="msg.displayName"> </img>
           <p>{{ msg.text }}</p>
         </div>
@@ -54,8 +52,9 @@
         @keydown.enter.exact.prevent
         @keyup.enter.exact="sendMessages"
         @keydown.enter.shift.exact="newline"
+        prepend-inner-icon="mdi-paperclip"
+        append-icon="mdi-sticker-circle-outline"
       ></v-textarea>
-      <!-- {{user}} -->
       <v-btn icon small @click="sendMessages" :disabled="!message">
         <v-icon> mdi-microphone </v-icon>
       </v-btn>

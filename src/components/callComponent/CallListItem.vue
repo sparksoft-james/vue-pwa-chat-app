@@ -8,8 +8,8 @@
           </v-list-item-avatar>
 
           <v-list-item-content>
-            <v-list-item-title v-html="item.title" class="name"></v-list-item-title>
-            <v-list-item-subtitle v-html="item.subtitle" class="description"></v-list-item-subtitle>
+            <v-list-item-title v-html="renderCallListTitle(item)" class="name"></v-list-item-title>
+            <v-list-item-subtitle v-html="renderCallListSubtitle(item)" class="description"></v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         </template>
@@ -18,8 +18,27 @@
  
 </template>
 <script>
+import {incoming, outgoing, missed} from '@/assets/svg/commonSvg.js'
 export default {
-  props: { items: { type: Array, required: true } }
+  props: { items: { type: Array, required: true } },
+  methods: {
+    renderCallListTitle(item){
+      return `<b>${item.name}</b> <span style="float:right; font-weight: 400; font-size: 13px">${item.datetime}</span>`
+    },
+    renderCallListSubtitle(item) {
+      let iconSvg = ''
+
+      if(item.callStatus === 'Incoming') {
+        iconSvg = incoming
+      } else if (item.callStatus === 'Outgoing') {
+        iconSvg = outgoing
+      } else if (item.callStatus === 'Missed') {
+        iconSvg = missed
+        return `<span>${iconSvg}</span> <span style="font-weight: 400; font-size: 13px">${item.callStatus}</span>`
+      }
+      return `<span>${iconSvg}</span> <span style="font-weight: 400; font-size: 13px">${item.callStatus}</span> . <span>${item.duration}</span> `
+    }
+  },
 }
 </script>
 <style lang="scss">

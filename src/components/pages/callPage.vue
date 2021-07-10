@@ -1,39 +1,73 @@
 <template>
   <div class="call-page">
     <Header headerName="Calls" />
-    <CallListItem :items="listitem" />
+    <!-- all -->
+    <CallListItem v-if="currentTabs === 'all'" :items="allItems" />
+    <!-- missed -->
+    <CallListItem v-else-if="currentTabs === 'missed'" :items="missedItems" />
   </div>
 </template>
 <script>
 import Header from '@/components/generalComponents/Header'
 import CallListItem from '@/components/callComponent/CallListItem'
+import { mapGetters } from 'vuex'
 
 export default {
   components: { Header, CallListItem },
   data() {
     return {
-      listitem: [
+      allItems: [
         {
           avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-          title: 'Brunch this weekend?',
-          datetime: '',
-          subtitle: `<span class="text--primary">Ali Connors</span> &mdash; I'll be in your neighborhood doing errands this weekend. Do you want to hang out?`
+          name: 'Jane Cooper',
+          datetime: '18:21',
+          duration: '01.34',
+          callStatus: `Incoming`
         },
         {
           avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
-          title: 'Summer BBQ <span class="grey--text text--lighten-1">4</span>',
-          datetime: '',
-          subtitle: `<span class="text--primary">to Alex, Scott, Jennifer</span> &mdash; Wish I could come, but I'm out of town this weekend.`
+          name: 'Robert Fox',
+          datetime: '10:19',
+          duration: '02.05',
+          callStatus: `Outgoing`
         },
         {
           avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-          title: 'Oui oui',
-          datetime: '',
-          subtitle:
-            '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?'
+          name: 'Cameron Williamson',
+          datetime: '10/8',
+          duration: '',
+          callStatus: 'Missed'
+        }
+      ],
+      missedItems: [
+        {
+          avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
+          name: 'Jane Cooper',
+          datetime: '18:21',
+          duration: '',
+          callStatus: `Missed`
+        },
+        {
+          avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
+          name: 'Robert Fox',
+          datetime: '10:19',
+          duration: '',
+          callStatus: `Missed`
+        },
+        {
+          avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
+          name: 'Cameron Williamson',
+          datetime: '10/8',
+          duration: '',
+          callStatus: 'Missed'
         }
       ]
     }
+  },
+  computed: {
+    ...mapGetters({
+      currentTabs: 'currentTabs'
+    })
   }
 }
 </script>

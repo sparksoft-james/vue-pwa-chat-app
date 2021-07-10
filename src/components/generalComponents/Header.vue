@@ -1,13 +1,29 @@
 <template lang="">
   <div class="d-flex flex-row justify-space-between header align-center">
-    <h1 class="chat-list-title">{{ headerName }}</h1>
+    <div class="d-flex flex-row align-end">
+      <h1 class="chat-list-title">{{ headerName }}</h1>
+      <!-- tab (call) -->
+      <div v-if="this.$route.name === 'call'" class="tab">
+        <span
+          @click="setSelectedPage('all')"
+          :class="['button', selectedPage === 'all' && 'selected-button']"
+        >
+          All
+        </span>
+        <span
+          @click="setSelectedPage('missed')"
+          :class="['button', selectedPage === 'missed' && 'selected-button']"
+        >
+          Missed
+        </span>
+      </div>
+    </div>
     <svg
       width="20"
       height="20"
       viewBox="0 0 20 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      @click="routeToNewMessage"
     >
       <g opacity="0.9">
         <circle cx="9.5" cy="9.5" r="8.5" stroke="black" stroke-width="2" />
@@ -22,11 +38,23 @@
   </div>
 </template>
 <script>
+import store from '@/store'
+
 export default {
   props: { headerName: { type: String, required: true } },
+  data() {
+    return {
+      selectedPage: 'all'
+    }
+  },
   methods: {
-    routeToNewMessage() {
-      this.$router.push('/newMessage')
+    // routeToNewMessage() {
+    //   this.$router.push('/newMessage')
+    // }
+
+    setSelectedPage(page) {
+      this.selectedPage = page
+      store.dispatch('changeCurrentPage', page)
     }
   }
 }
@@ -34,6 +62,7 @@ export default {
 <style lang="scss">
 .header {
   margin: 20px 0;
+  position: relative;
   .chat-list-title {
     width: 111px;
     height: 36px;
@@ -53,6 +82,19 @@ export default {
 
     opacity: 0.9;
   }
+  .tab {
+    margin-left: 20px;
+    .button {
+      cursor: pointer;
+      // position: absolute;
+      bottom: 0;
+    }
+
+    .selected-button {
+      font-weight: bold;
+    }
+  }
+
   .magnify-icon {
     font-size: 40px;
   }
