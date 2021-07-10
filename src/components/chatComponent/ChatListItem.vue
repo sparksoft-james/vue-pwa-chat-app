@@ -2,7 +2,7 @@
   <div class="chat-list-item">
      <v-list three-line >
        <template v-for="(item, index) in items">
-        <v-list-item class="single-list-item" @click="routeToChat">
+        <v-list-item class="single-list-item" @click="routeToChat(item)">
           <v-list-item-avatar class="avatar">
             <v-img :src="item.avatar"></v-img>
           </v-list-item-avatar>
@@ -21,7 +21,8 @@
 export default {
   props: { items: { type: Array, required: true } },
   methods: {
-    routeToChat(){
+    routeToChat(item){
+      this.$cookies.set('current_user',item)
       this.$router.push('/chat')
     }
   }

@@ -1,16 +1,15 @@
 <template>
   <div class="settings-page d-flex align-center justify-center col-12">
-    <div v-if="user">
-      <h3 class="mb-3">{{ user.data.displayName }}</h3>
-      <v-btn v-if="user" @click="signOutFunc">Sign Out</v-btn>
+    <div v-if="user.loggedIn">
+      <h3 class="mb-3">{{ user.data && user.data.displayName }}</h3>
+      <v-btn @click="signOutFunc()">Sign Out</v-btn>
     </div>
 
     <v-btn v-else @click="signInFunc">Login with Google</v-btn>
   </div>
 </template>
 <script>
-import firebase from 'firebase/app'
-import 'firebase/auth'
+import firebase from 'firebase'
 
 import { mapGetters } from 'vuex'
 

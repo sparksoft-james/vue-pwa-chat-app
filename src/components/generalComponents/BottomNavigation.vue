@@ -26,6 +26,7 @@ export default {
   },
   methods: {
     route(url) {
+      this.currentTab = url
       this.$router.push({ name: url })
     }
   }
