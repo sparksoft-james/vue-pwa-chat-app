@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="chat-page">
     <!-- header part -->
-    <div class="chat-header d-flex flex-row">
+    <div class="chat-header flex-row">
       <v-icon @click="$router.go(-1)">mdi-chevron-left</v-icon>
       <v-list-item class="chat-header-info">
         <v-list-item-avatar class="avatar">
