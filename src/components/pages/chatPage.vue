@@ -1,4 +1,4 @@
-<template lang="">
+<template lang="html">
   <div class="chat-page">
     <!-- header part -->
     <div class="chat-header d-flex flex-row">
